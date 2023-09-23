@@ -128,9 +128,10 @@ https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93
 
 The application uses Linux's `file` command to check the type of the
 uploaded file. However the command uses the filename as the part of the
-command. This allows user to pass Shell commands either by uploading
-specifically named files to the server using the web application or
-by using some other client like CURL to pass arbitrary filenames.
+command. This allows malicious user to pass shell commands either by
+uploading specifically named files to the server using the web
+application or by using some other client like `curl` to pass arbitrary
+filenames, and therefore arbitrary shell commands.
 
 Little example commands (NOTE: Linux solution) for exploitation:
 
@@ -165,9 +166,9 @@ concatenated string. This works because the command shell is not launched
 anymore, and the given arguments are passed to the argument vector of the
 `file` program, preventing any other programs or commands to be executed.
 
-<!-- #L187-L190 -->
+<!-- #L183-L190 -->
 
-https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L187-L190
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L183-L190
 
 
 
@@ -176,9 +177,9 @@ https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93
 
 #### Location(s)
 
-<!--
-[github-link-to-the-location](github-link-to-location)
--->
+<!-- #L39-L40 -->
+
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L39-L40
 
 #### Description
 
@@ -191,8 +192,8 @@ gathering to exploit the application and/or it's users.
 
 Flask applications also use secret key as part of the session cookie.
 This key is used to verify the signature of the session cookie. Having
-this key would allow the attacker to forge the session cookie signature
-and imitate valid users.
+this key exposed would allow the attacker to forge the session cookie
+signature and imitate valid users.
 
 #### Fix
 
@@ -204,16 +205,17 @@ arguments when the application is launched.
 Secret key should be a random string with sufficient length. Debug-mode
 should always default to False unless explicitly told otherwise.
 
-Example command (NOTE: Linux solution) to run the application with debug
-mode and randomly generated secret key:
+Example command (NOTE: Linux solution) to run the application with explicit
+debug mode and randomly generated secret key:
 
 ```bash
 DEBUG=1 SECRET_KEY="$(cat /dev/urandom | tr -dc '[:alpha:]' | fold -w ${1:-64} | head -n 1)" python run.py
 ```
 
-Required changes in the source code can be found at:
+<!-- #L32-37 -->
 
-[github-link-to-the-location]()
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L32-L37
+
 
 
 
@@ -261,14 +263,45 @@ and increases reaction time
 
 First we need to configure a simple logger to log into file `visp.log`:
 
-[github-link-to-location]()
+<!-- #L18-27 -->
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L18-L27
 
 Then we need to apply logging each time a security event happens.
 
+When someone tries to access resource without authorization:
+
+<!-- #L55-L59 -->
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L55-L59
+
+When someone has tried to login unsuccesfully:
+
+<!-- #L120-L127 -->
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L120-L127
+
+When someone tried to attack path injection:
+
+<!-- #L170-L174 -->
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L170-L174
+
+When someone tried to upload non-supported file:
+
+<!-- #L200-204 -->
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L200-L204
+
+When someone tries to share image that doesn't belong to them:
+
+<!-- #L242-L248  -->
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L242-L248
+
+When someone tries to delete image that doesn't belong to them:
+
+<!-- #L280-L288 -->
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L280-L288
+
 This file can then be analyzed during runtime with separate tools like
 SIEM and intrusion detection (IDS) systems for system adminstrators and
-CSO's to monitor. It is also possible to handle the brute force problem
-(Flaw 5) with these tools instead of our naive implementation (although
-it fixes the problem, it is bad user experience).
+CSO's to monitor and initiate necessary actions.
 
-
+It is also possible to handle the brute force problem (Flaw 5) with these
+tools instead of the given naive implementation (although it fixes the problem,
+it is a bad user experience).
