@@ -1,0 +1,13 @@
+# General
+venv
+env
+__pycache__
+
+# The generated database file
+database.json
+
+# Log file
+visp.log
+
+# Miscellanious testing scripts
+misc
