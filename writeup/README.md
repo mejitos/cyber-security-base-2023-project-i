@@ -10,6 +10,8 @@ Installation instructions along with other relevant information can be found
 from the repository's `README.md` file.
 
 
+
+
 ## Flaw 1: [A01:2021 - Broken Access Control](https://owasp.org/Top10/A01_2021-Broken_Access_Control/)
 
 #### Location(s)
@@ -56,6 +58,8 @@ https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93
 <!-- #L258-L267 -->
 
 https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L258-L267
+
+
 
 
 ## Flaw 2: [A02:2021 - Cryptographic Failures](https://owasp.org/Top10/A02_2021-Cryptographic_Failures/)
@@ -110,13 +114,15 @@ advanced-options:
 Now the packet contents are encrypted.
 
 
+
+
 ## Flaw 3: [A03:2021 - Injection](https://owasp.org/Top10/A03_2021-Injection/)
 
 #### Location(s)
 
-<!--
-[github-link-to-the-location](github-link-to-location)
--->
+<!-- #L193-L196 -->
+
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L193-L196
 
 #### Description
 
@@ -159,9 +165,9 @@ concatenated string. This works because the command shell is not launched
 anymore, and the given arguments are passed to the argument vector of the
 `file` program, preventing any other programs or commands to be executed.
 
-<!--
-github link to source
--->
+<!-- #L187-L190 -->
+
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L187-L190
 
 
 
