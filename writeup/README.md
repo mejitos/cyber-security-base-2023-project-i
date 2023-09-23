@@ -245,19 +245,16 @@ asd
 
 #### Location(s)
 
-<!--
-[github-link-to-the-location](github-link-to-location)
--->
+Half a dozen locations, which are easier to provide in the `Fix` section
+with explanation.
 
 #### Description
 
-Currently the application doesn't do any logging whatsoever.
-
-This prevents
-
-security incidents
-
-and increases reaction time
+Currently the application doesn't do any logging whatsoever. This is
+especially problematic when security incidents are not being logged. This
+increases reaction time and prevents early mitigation of possible system
+breaches. This allows attackers to roam pretty much freely in the system
+and gather information.
 
 #### Fix
 
