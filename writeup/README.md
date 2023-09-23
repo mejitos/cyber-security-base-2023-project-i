@@ -7,7 +7,7 @@
 #### Installation
 
 Installation instructions along with other relevant information can be found
-from the repository's file `README.md`.
+from the repository's `README.md` file.
 
 
 ## Flaw 1: [A01:2021 - Broken Access Control](https://owasp.org/Top10/A01_2021-Broken_Access_Control/)
@@ -24,30 +24,37 @@ https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93
 
 #### Description
 
-<!-- WHERE -->
-- VISP has exactly this kind of problem.
-- When fetching all images, the ownership of the images is checked so
-each user will only see their own images.
-- This allows user's to modify only their own images and not others.
-- However, this restriction only applies if the application is used
-through the web application.
-- This does nothing to requests made by other clients.
+The application has classical problem where the application was initially
+devloped as single-user system, but when it was time to change to multi-user
+system, not enough things were taken into consideration. When using the GUI
+from browser, everything seems normal. User's aren't able to see or modify
+anything that doesn't belong to them. However, if malicious user decides to
+use any other client to make requests, it is possible to share unshared images
+or delete any existing images by only knowing the ID of the image. This ID
+can be obtained by using browser development tools.
 
-<!-- HOW TO EXPLOIT -->
-- This can be exploited
+Example `curl` command (change the image ID and session cookie accordingly):
+
+```bash
+curl -X DELETE \
+    "localhost:5000/api/images/d63291b2-d1de-4bed-b9e3-566229b6d181" \
+    --cookie "session=eyJ1c2VyIjp7ImlkIjoiY2YyZGQwODUtNjEyYS00MDg2LWJmMGMtZTgxMzIwMDRhZTA4IiwibmFtZSI6ImFsaWNlIn19.ZPr1LQ.QvB5s2c7S3SduLcBTrlupHSHGao"
+```
 
 #### Fix
 
-- Broken access control can be fixed
-- by making sure the requested resources belong to the user requesting them.
-- It has to be implemented in such way, that it doesn't matter who or what
-sends the request.
-- Similar checks should be made when updating and removing images as are
-done when the images are being checked
+Ownership of the image should be checked when sharing or deleting an image.
+Just like it is done while requesting the list of the images. The implementation
+has to make sure, it doesn't matter what client send the request, no one
+except the owner of the image should be able to modify the images.
 
-- link?
-- link?
+<!-- #L231-L238 -->
 
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L231-L238
+
+<!-- #L258-L267 -->
+
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L258-267
 
 
 ## Flaw 2: [A02:2021 - Cryptographic Failures](https://owasp.org/Top10/A02_2021-Cryptographic_Failures/)
