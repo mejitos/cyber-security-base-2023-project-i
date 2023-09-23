@@ -33,7 +33,8 @@ use any other client to make requests, it is possible to share unshared images
 or delete any existing images by only knowing the ID of the image. This ID
 can be obtained by using browser development tools.
 
-Example `curl` command (change the image ID and session cookie accordingly):
+Example `curl` command for deleting an image (change the image ID and session
+cookie accordingly):
 
 ```bash
 curl -X DELETE \
@@ -54,7 +55,7 @@ https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93
 
 <!-- #L258-L267 -->
 
-https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L258-267
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L258-L267
 
 
 ## Flaw 2: [A02:2021 - Cryptographic Failures](https://owasp.org/Top10/A02_2021-Cryptographic_Failures/)
