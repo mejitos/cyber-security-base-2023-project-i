@@ -1,4 +1,4 @@
-# Write up
+# Write-up
 
 #### Link to the repository
 
@@ -52,9 +52,7 @@ done when the images are being checked
 
 #### Location(s)
 
-<!--
-[github-link-to-the-location](github-link-to-location)
--->
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L324
 
 #### Description
 
