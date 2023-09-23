@@ -2,7 +2,7 @@
 
 #### Link to the repository
 
-[](https://github.com/mejitos/cyber-security-base-2023-project-i/tree/master)
+[https://github.com/mejitos/cyber-security-base-2023-project-i](https://github.com/mejitos/cyber-security-base-2023-project-i)
 
 #### Installation
 
