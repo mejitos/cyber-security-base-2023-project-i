@@ -223,9 +223,8 @@ https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93
 
 #### Location(s)
 
-<!--
-[github-link-to-the-location](github-link-to-location)
--->
+<!-- -->
+The whole `login()` function starting at line 80.
 
 #### Description
 
@@ -237,7 +236,18 @@ curl -X POST localhost:5000/login -F "username=a" -F "password=b"
 
 #### Fix
 
-asd
+<!-- #L43-L48 -->
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L43-L48
+
+<!-- #L82-L88 -->
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L82-L88
+
+<!-- #L101-L105 -->
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L101-L105
+
+<!-- #L110-L118 -->
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L110-L118
+
 
 
 
