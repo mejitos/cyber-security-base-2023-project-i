@@ -16,9 +16,13 @@ from the repository's file `README.md`.
 
 #### Location(s)
 
-<!--
-[github-link-to-the-location]()
--->
+<!-- #L239-L241-->
+
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L239-L241
+
+<!-- #L269-L278-->
+
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L269-L278
 
 #### Description
 
@@ -52,6 +56,8 @@ done when the images are being checked
 
 #### Location(s)
 
+<!-- #L324 -->
+
 https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L324
 
 #### Description
@@ -84,16 +90,18 @@ You need to have `pyopenssl` installed (installed with the requirements)
 and add the `ssl_context` keyword argument to the application `run()`
 method.
 
+<!-- #L314-L322 -->
+
 https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L314-L322
 
 Since the browser or operating system doesn't recognize this ad-hoc
 certificate authority, you might see security notification in the browser,
-and manually allow the use of the unknown certificate:
+and manually allow the use of the unknown certificate through the
+advanced-options:
 
 ![Untrusted certificate authority](./a02_unknown_caa.png)
 
-Now the packets cannot be sniffed.
-
+Now the packet contents are encrypted.
 
 
 ## Flaw 3: [A03:2021 - Injection](https://owasp.org/Top10/A03_2021-Injection/)
