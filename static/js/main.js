@@ -1,12 +1,11 @@
 "use strict";
 
 import state, { views } from './state.js';
-import create_api_client from './api_client.js';
+import api_client from './api_client.js';
 import { clear_node, render_image } from './rendering.js';
 
 
 (() => {
-    const api_client = create_api_client();
 
     const load_images = async () => {
         try {
@@ -88,8 +87,10 @@ import { clear_node, render_image } from './rendering.js';
             const form_data = new FormData(event.target);
 
             try {
-                await api_client.post('/api/images', form_data);
-                render_image(state.dom.images, respoonse.data);
+                const response = await api_client.post('/api/images', form_data);
+                render_image(state.dom.images, response.data);
+                state.dom.modal.classList.remove('open');
+                event.target.reset();
             } catch (error) {
                 console.log(error);
             }

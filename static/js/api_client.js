@@ -30,10 +30,10 @@ const create_api_client = (options = {}) => {
         const response = await fetch(`${BASE_URL}${resource}`, {
             method: 'PATCH',
         });
-        const data = await response.json();
+        // const data = await response.json();
 
         return {
-            data,
+            // data,
         };
     };
 
@@ -41,10 +41,10 @@ const create_api_client = (options = {}) => {
         const response = await fetch(`${BASE_URL}${resource}`, {
             method: 'DELETE',
         });
-        const data = await response.json();
+        // const data = await response.json();
 
         return {
-            data,
+            // data,
         };
     };
 
@@ -56,4 +56,6 @@ const create_api_client = (options = {}) => {
     };
 };
 
-export default create_api_client;
+const api_client = create_api_client();
+
+export default api_client;
