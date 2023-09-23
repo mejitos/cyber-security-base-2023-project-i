@@ -84,9 +84,7 @@ You need to have `pyopenssl` installed (installed with the requirements)
 and add the `ssl_context` keyword argument to the application `run()`
 method.
 
-<!--
-Link to fix
--->
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L314-322
 
 Since the browser or operating system doesn't recognize this ad-hoc
 certificate authority, you might see security notification in the browser,
