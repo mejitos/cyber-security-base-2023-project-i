@@ -1,0 +1,34 @@
+{% extends 'template.html' %}
+{% block content %}
+<div class="form__wrapper">
+    <!--
+    <div class="blob1__wrapper">
+        <div class="blob1"></div>
+    </div>
+
+    <div class="blob2__wrapper">
+        <div class="blob2"></div>
+    </div>
+    -->
+
+    <div class="login_form glass">
+        <h1 class="logo">VISP</h1>
+
+        <span>Vulnerable Image<br>Sharing Platform</span>
+
+        <form action="/login" method="POST">
+            <div class="form__row">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" autocomplete="off" />
+            </div>
+
+            <div class="form__row">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" autocomplete="off" />
+            </div>
+
+            <input type="submit" value="Login" />
+        </form>
+    </div>
+</div>
+{% endblock content %}

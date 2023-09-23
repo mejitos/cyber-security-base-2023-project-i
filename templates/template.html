@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Vulnerable web application for Cyber Security Base -course">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- JavaScript -->
+    {% if user %}
+    <script defer src="{{ url_for('static', filename='js/main.js') }}" type="module"></script>
+    {% endif %}
+
+    <title>VISP - Vulnerable Image Sharing Platform</title>
+</head>
+<body>
+    {% if user %}
+    <div class="modal__wrapper">
+        <div class="modal__backdrop"></div>
+
+        <div class="modal__content glass">
+            <h2>Upload image</h2>
+
+            <form id="upload_form">
+                <div class="form__row">
+                    <label>Image</label>
+                    <input type="file" name="image" accept="image/png, image/jpeg" multiple/>
+                </div>
+
+                <div class="form__row">
+                    <label>Title</label>
+                    <input type="text" name="title" autocomplete="off"/>
+                </div>
+
+                <div class="form__row">
+                    <label>Description</label>
+                    <textarea name="description" rows="5"/></textarea>
+                </div>
+
+                <div class="form__row">
+                    <label>Share</label>
+                    <input type="checkbox" name="shared" value="1"/>
+                </div>
+
+                <input type="submit" value="Upload" />
+            </form>
+        </div>
+    </div>
+
+    <header class="glass container">
+        <div class="logo__wrapper">
+            <h1 class="logo">VISP</h1>
+        </div>
+
+        <nav>
+            <button class="nav__item" type="button" data-view="OWN">
+                Own
+            </button>
+
+            <button class="nav__item" type="button" data-view="SHARED">
+                Shared
+            </button>
+
+            <button class="nav__item" type="button" id="open_modal">
+                Upload
+            </button>
+
+            <button class="nav__item" type="button" id="logout">
+                <form action="/logout" method="POST">
+                    Logout
+                </form>
+            </button>
+        </nav>
+    </header>
+    {% endif %}
+
+    <main class="container">
+        {% block content %}
+        {% endblock content %}
+    </main>
+
+    <div class="blob4__wrapper">
+        <div class="blob4">
+        </div>
+    </div>
+    <div class="blob3__wrapper">
+        <div class="blob3">
+        </div>
+    </div>
+</body>
+</html>
