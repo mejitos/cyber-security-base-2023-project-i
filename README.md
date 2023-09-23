@@ -18,38 +18,37 @@
 
 ### Clone the repo
 
-```
+```bash
 git clone git@github.com:mejitos/cyber-security-base-2023-project-i.git
 cd cyber-security-base-2023-project-i
 ```
 
 ### Create a virtual environment
 
-```
+```bash
 python -m venv env
 source env/bin/activate
 ```
 
 ### Install library dependecies
 
-```
+```bash
 pip install -r requirements.txt
 ```
 
 
 ## Run the application
 
-Start the server
+Activate the virtual environment if you already haven't.
 
-```
+Start the server:
+
+```bash
 python run.py
 ```
 
-and in browser, go to url
+and in browser, go to url [127.0.0.1:5000](127.0.0.1:5000)
 
-```
-127.0.0.1:5000
-```
 
 
 ## Usage
