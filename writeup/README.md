@@ -228,25 +228,45 @@ The whole `login()` function starting at line 80.
 
 #### Description
 
-asd
+The application allows unlimited attempts in guessing correct username
+and password. This enables brute force attacks to be carried out. Attackers
+could eventually guess the credentials of all system users.
 
+<!--
 ```bash
 curl -X POST localhost:5000/login -F "username=a" -F "password=b"
 ```
+-->
 
 #### Fix
+
+To keep things simple, the problem is fixed with a simple jail solution.
+First set required variables to keep track of login attempts and unwanted
+IP addresses:
 
 <!-- #L43-L48 -->
 https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L43-L48
 
+Then block login attempts from all unwanted IP addresses (= from addresses
+in the jail):
+
 <!-- #L82-L88 -->
 https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L82-L88
+
+Then after each unsuccesful login attempt, make note of this and put IP
+addresses into jail if they have tried to log in too many times:
+
+<!-- #L110-L118 -->
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L110-L118
+
+On each succesful login, the login attempts will be reseted:
 
 <!-- #L101-L105 -->
 https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L101-L105
 
-<!-- #L110-L118 -->
-https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L110-L118
+This fixes the problem but is not great for user experience, because
+users will be blocked from using the application until the application
+is restarted (= which will clear to jail completely).
 
 
 
