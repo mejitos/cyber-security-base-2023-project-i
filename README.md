@@ -53,6 +53,10 @@ and in browser, go to url [127.0.0.1:5000](127.0.0.1:5000)
 
 ## Usage
 
+The application is called VISP, or Vulnerable Image Sharing Platform which
+is exactly that: a vulnerable web application where you can upload and share
+images with other users.
+
 Has two users:
 
 | username | password |
