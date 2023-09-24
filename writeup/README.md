@@ -17,11 +17,9 @@ from the repository's `README.md` file.
 #### Location(s)
 
 <!-- #L241-L243-->
-
 https://github.com/mejitos/cyber-security-base-2023-project-i/blob/1baf9a4b43c94d1b65f128d47af48bd4876f3a12/run.py#L241-L243
 
 <!-- #L266-L275-->
-
 https://github.com/mejitos/cyber-security-base-2023-project-i/blob/1baf9a4b43c94d1b65f128d47af48bd4876f3a12/run.py#L266-L275
 
 #### Description
@@ -52,11 +50,9 @@ has to make sure, it doesn't matter what client send the request, no one
 except the owner of the image should be able to modify the images.
 
 <!-- #L234-L239 -->
-
 https://github.com/mejitos/cyber-security-base-2023-project-i/blob/1baf9a4b43c94d1b65f128d47af48bd4876f3a12/run.py#L234-L239
 
 <!-- #L259-L264 -->
-
 https://github.com/mejitos/cyber-security-base-2023-project-i/blob/1baf9a4b43c94d1b65f128d47af48bd4876f3a12/run.py#L259-L264
 
 
@@ -66,9 +62,8 @@ https://github.com/mejitos/cyber-security-base-2023-project-i/blob/1baf9a4b43c94
 
 #### Location(s)
 
-<!-- #L324 -->
-
-https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L324
+<!-- #L317 -->
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/1baf9a4b43c94d1b65f128d47af48bd4876f3a12/run.py#L317
 
 #### Description
 
@@ -100,9 +95,8 @@ You need to have `pyopenssl` installed (installed with the requirements)
 and add the `ssl_context` keyword argument to the application `run()`
 method.
 
-<!-- #L314-L322 -->
-
-https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L314-L322
+<!-- #L307-L315 -->
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/1baf9a4b43c94d1b65f128d47af48bd4876f3a12/run.py#L307-L315
 
 Since the browser or operating system doesn't recognize this ad-hoc
 certificate authority, you might see security notification in the browser,
