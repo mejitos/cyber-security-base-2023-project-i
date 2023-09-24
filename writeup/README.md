@@ -16,13 +16,13 @@ from the repository's `README.md` file.
 
 #### Location(s)
 
-<!-- #L239-L241-->
+<!-- #L241-L243-->
 
-https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L239-L241
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/1baf9a4b43c94d1b65f128d47af48bd4876f3a12/run.py#L241-L243
 
-<!-- #L269-L278-->
+<!-- #L266-L275-->
 
-https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L269-L278
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/1baf9a4b43c94d1b65f128d47af48bd4876f3a12/run.py#L266-L275
 
 #### Description
 
@@ -51,13 +51,13 @@ Just like it is done while requesting the list of the images. The implementation
 has to make sure, it doesn't matter what client send the request, no one
 except the owner of the image should be able to modify the images.
 
-<!-- #L231-L238 -->
+<!-- #L234-L239 -->
 
-https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L231-L238
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L234-L239
 
-<!-- #L258-L267 -->
+<!-- #L259-L264 -->
 
-https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L258-L267
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L259-L264
 
 
 
