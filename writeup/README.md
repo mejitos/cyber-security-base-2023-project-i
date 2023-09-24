@@ -17,10 +17,10 @@ from the repository's `README.md` file.
 #### Location(s)
 
 <!-- #L241-L243-->
-https://github.com/mejitos/cyber-security-base-2023-project-i/blob/1baf9a4b43c94d1b65f128d47af48bd4876f3a12/run.py#L241-L243
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/398bee06a4f868e34acf4b618db9c4bc02cc4096/run.py#L241-L243
 
 <!-- #L266-L275-->
-https://github.com/mejitos/cyber-security-base-2023-project-i/blob/1baf9a4b43c94d1b65f128d47af48bd4876f3a12/run.py#L266-L275
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/398bee06a4f868e34acf4b618db9c4bc02cc4096/run.py#L266-L275
 
 #### Description
 
@@ -50,10 +50,10 @@ has to make sure, it doesn't matter what client send the request, no one
 except the owner of the image should be able to modify the images.
 
 <!-- #L234-L239 -->
-https://github.com/mejitos/cyber-security-base-2023-project-i/blob/1baf9a4b43c94d1b65f128d47af48bd4876f3a12/run.py#L234-L239
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/398bee06a4f868e34acf4b618db9c4bc02cc4096/run.py#L234-L239
 
 <!-- #L259-L264 -->
-https://github.com/mejitos/cyber-security-base-2023-project-i/blob/1baf9a4b43c94d1b65f128d47af48bd4876f3a12/run.py#L259-L264
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/398bee06a4f868e34acf4b618db9c4bc02cc4096/run.py#L259-L264
 
 
 
@@ -63,7 +63,7 @@ https://github.com/mejitos/cyber-security-base-2023-project-i/blob/1baf9a4b43c94
 #### Location(s)
 
 <!-- #L317 -->
-https://github.com/mejitos/cyber-security-base-2023-project-i/blob/1baf9a4b43c94d1b65f128d47af48bd4876f3a12/run.py#L317
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/398bee06a4f868e34acf4b618db9c4bc02cc4096/run.py#L317
 
 #### Description
 
@@ -93,10 +93,10 @@ we opt to use the Werkzeug's ad-hoc-solution.
 
 You need to have `pyopenssl` installed (installed with the requirements)
 and add the `ssl_context` keyword argument to the application `run()`
-method.
+method:
 
 <!-- #L307-L315 -->
-https://github.com/mejitos/cyber-security-base-2023-project-i/blob/1baf9a4b43c94d1b65f128d47af48bd4876f3a12/run.py#L307-L315
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/398bee06a4f868e34acf4b618db9c4bc02cc4096/run.py#L307-L315
 
 Since the browser or operating system doesn't recognize this ad-hoc
 certificate authority, you might see security notification in the browser,
@@ -114,9 +114,8 @@ Now the packet contents are encrypted.
 
 #### Location(s)
 
-<!-- #L193-L196 -->
-
-https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L193-L196
+<!-- #L192-L195 -->
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/398bee06a4f868e34acf4b618db9c4bc02cc4096/run.py#L192-L195
 
 #### Description
 
@@ -127,7 +126,7 @@ uploading specifically named files to the server using the web
 application or by using some other client like `curl` to pass arbitrary
 filenames, and therefore arbitrary shell commands.
 
-Little example commands (NOTE: Linux solution) for exploitation:
+Example commands (NOTE: Linux solution) for exploitation:
 
 ```bash
 # Create file called legit.txt which is sent to the server
@@ -139,18 +138,17 @@ touch legit.txt
 #
 # NOTE: Change the session cookie to your own cookie (can be
 # taken from browser using devtools).
-curl -X POST localhost:5000/api/images \
+curl -X POST \
+    localhost:5000/api/images \
     -F "image=@legit.txt;filename=legit.txt && echo 'howdy doody from hacker' >> pwn.txt" \
     --cookie "session=eyJ1c2VyIjp7ImlkIjoiY2YyZGQwODUtNjEyYS00MDg2LWJmMGMtZTgxMzIwMDRhZTA4IiwibmFtZSI6ImFsaWNlIn19.ZPr1LQ.QvB5s2c7S3SduLcBTrlupHSHGao"
 
 # Remove the file created with the command injection
-curl -X POST localhost:5000/api/images \
+curl -X POST \
+    localhost:5000/api/images \
     -F "image=@legit.txt;filename=legit.txt && rm pwn.txt" \
     --cookie "session=eyJ1c2VyIjp7ImlkIjoiY2YyZGQwODUtNjEyYS00MDg2LWJmMGMtZTgxMzIwMDRhZTA4IiwibmFtZSI6ImFsaWNlIn19.ZPr1LQ.QvB5s2c7S3SduLcBTrlupHSHGao"
 ```
-
-This injection could be used to run pretty much arbitrary commands
-in the command shell.
 
 #### Fix
 
@@ -160,9 +158,8 @@ concatenated string. This works because the command shell is not launched
 anymore, and the given arguments are passed to the argument vector of the
 `file` program, preventing any other programs or commands to be executed.
 
-<!-- #L183-L190 -->
-
-https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L183-L190
+<!-- #L182-L189 -->
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/398bee06a4f868e34acf4b618db9c4bc02cc4096/run.py#L182-L189
 
 
 
@@ -172,8 +169,7 @@ https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93
 #### Location(s)
 
 <!-- #L39-L40 -->
-
-https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L39-L40
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/398bee06a4f868e34acf4b618db9c4bc02cc4096/run.py#L39-L40
 
 #### Description
 
@@ -197,7 +193,8 @@ outside of the source code. Instead they are explicitly passed with the
 arguments when the application is launched.
 
 Secret key should be a random string with sufficient length. Debug-mode
-should always default to False unless explicitly told otherwise.
+should always default to False unless explicitly told otherwise during
+development process e.g. when running development server.
 
 Example command (NOTE: Linux solution) to run the application with explicit
 debug mode and randomly generated secret key:
@@ -207,8 +204,7 @@ DEBUG=1 SECRET_KEY="$(cat /dev/urandom | tr -dc '[:alpha:]' | fold -w ${1:-64} |
 ```
 
 <!-- #L32-37 -->
-
-https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L32-L37
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/398bee06a4f868e34acf4b618db9c4bc02cc4096/run.py#L32-L37
 
 
 
@@ -222,9 +218,11 @@ The whole `login()` function starting at line 80.
 
 #### Description
 
-The application allows unlimited attempts in guessing correct username
+The application allows unlimited attempts for guessing correct username
 and password. This enables brute force attacks to be carried out. Attackers
-could eventually guess the credentials of all system users.
+could eventually guess the credentials of all system users. This can be
+done with automated scripts and even in a distributed manner with multiple
+machines.
 
 <!--
 ```bash
@@ -238,25 +236,25 @@ To keep things simple, the problem is fixed with a simple jail solution.
 First set required variables to keep track of login attempts and unwanted
 IP addresses:
 
-<!-- #L43-L48 -->
-https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L43-L48
+<!-- #L43-L52 -->
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/398bee06a4f868e34acf4b618db9c4bc02cc4096/run.py#L43-L52
 
 Then block login attempts from all unwanted IP addresses (= from addresses
 in the jail):
 
-<!-- #L82-L88 -->
-https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L82-L88
+<!-- #L86-L91 -->
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/398bee06a4f868e34acf4b618db9c4bc02cc4096/run.py#L86-L91
 
 Then after each unsuccesful login attempt, make note of this and put IP
 addresses into jail if they have tried to log in too many times:
 
-<!-- #L110-L118 -->
-https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L110-L118
+<!-- #L111-L119 -->
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/398bee06a4f868e34acf4b618db9c4bc02cc4096/run.py#L111-L119
 
 On each succesful login, the login attempts will be reseted:
 
-<!-- #L101-L105 -->
-https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L101-L105
+<!-- #L104-L108 -->
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/398bee06a4f868e34acf4b618db9c4bc02cc4096/run.py#L104-L108
 
 This fixes the problem but is not great for user experience, because
 users will be blocked from using the application until the application
@@ -278,46 +276,48 @@ Currently the application doesn't do any logging whatsoever. This is
 especially problematic when security incidents are not being logged. This
 increases reaction time and prevents early mitigation of possible system
 breaches. This allows attackers to roam pretty much freely in the system
-and gather information.
+and gather information about the system.
 
 #### Fix
 
 First we need to configure a simple logger to log into file `visp.log`:
 
 <!-- #L18-27 -->
-https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L18-L27
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/398bee06a4f868e34acf4b618db9c4bc02cc4096/run.py#L18-L27
 
 Then we need to apply logging each time a security event happens.
 
-When someone tries to access resource without authorization:
+When someone tries to access a resource without authorization:
 
-<!-- #L55-L59 -->
-https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L55-L59
+<!-- #L59-L63 -->
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/398bee06a4f868e34acf4b618db9c4bc02cc4096/run.py#L59-L63
 
 When someone has tried to login unsuccesfully:
 
-<!-- #L120-L127 -->
-https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L120-L127
+<!-- #L121-L128 -->
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/398bee06a4f868e34acf4b618db9c4bc02cc4096/run.py#L121-L128
 
-When someone tried to attack path injection:
+When someone tried to execute path injection:
 
-<!-- #L170-L174 -->
-https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L170-L174
+<!-- #L171-L175 -->
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/398bee06a4f868e34acf4b618db9c4bc02cc4096/run.py#L171-L175
 
 When someone tried to upload non-supported file:
 
-<!-- #L200-204 -->
-https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L200-L204
+<!-- #L199-203 -->
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/398bee06a4f868e34acf4b618db9c4bc02cc4096/run.py#L199-L203
 
-When someone tries to share image that doesn't belong to them:
+When someone tries to share an image that doesn't exist (this should never
+happen if the application is used as intended, so this is suspicious):
 
-<!-- #L242-L248  -->
-https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L242-L248
+<!-- #L245-L249  -->
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/398bee06a4f868e34acf4b618db9c4bc02cc4096/run.py#L245-L249
 
-When someone tries to delete image that doesn't belong to them:
+When someone tries to delete an image that doesn't exist (this should never
+happen if the application is used as intended, so this is suspicious):
 
-<!-- #L280-L288 -->
-https://github.com/mejitos/cyber-security-base-2023-project-i/blob/90db75b08af93b9c28d48b363554ec6110bfb08d/run.py#L280-L288
+<!-- #L277-L281 -->
+https://github.com/mejitos/cyber-security-base-2023-project-i/blob/398bee06a4f868e34acf4b618db9c4bc02cc4096/run.py#L277-L281
 
 This file can then be analyzed during runtime with separate tools like
 SIEM and intrusion detection (IDS) systems for system adminstrators and
@@ -325,4 +325,5 @@ CSO's to monitor and initiate necessary actions.
 
 It is also possible to handle the brute force problem (Flaw 5) with these
 tools instead of the given naive implementation (although it fixes the problem,
-it is a bad user experience).
+it is a bad user experience). Also in general, all of these flaws like Flaw 1
+(Broken access control) should be logged if detected.
