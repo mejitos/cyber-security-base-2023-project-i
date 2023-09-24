@@ -40,12 +40,16 @@ app.config['SECRET_KEY'] = 'supersekret'
 app.config['DEBUG'] = True
 
 
-# Global maximum login attempts
-MAX_LOGIN_ATTEMPTS = 5
-# <ip, number of tries>
-login_attempts = {}
-# set of banned ip addresses
-jail = set()
+# FIX Flaw 5: Identification and Authentication Failure
+#
+# UNCOMMENT
+#
+# # Global maximum login attempts
+# MAX_LOGIN_ATTEMPTS = 5
+# # <ip, number of tries>
+# login_attempts = {}
+# # set of banned ip addresses
+# jail = set()
 
 
 def authentication_required(handler):
@@ -84,7 +88,6 @@ def login():
         # UNCOMMENT
         #
         # if request.remote_addr in jail:
-        #     log.warning('')
         #     return make_response('Forbidden', 403)
 
         try:
@@ -105,8 +108,6 @@ def login():
                 # login_attempts[request.remote_addr] = 0
                 return redirect(url_for('index'))
 
-        # No user was found based on the given credentials
-
         # FIX Flaw 5: Identification and Authentication Failure
         #
         # UNCOMMENT
@@ -122,9 +123,9 @@ def login():
         # UNCOMMENT
         #
         # if login_attempts[request.remote_addr] == MAX_LOGIN_ATTEMPTS - 1:
-        #     log.warning(f'')
+        #     log.warning(f'[{request.remote_addr}] Invalid username or password. About to send client to jail')
         # else:
-        #     log.info(f'')
+        #     log.info(f'[{request.remote_addr}] Invalid username or passowrd')
 
         return redirect(url_for('login'))
 
@@ -176,24 +177,22 @@ def add_image():
 
     # Save the image for inspection
     image_path = app.root_path + '/static/images/' + image.filename
-    # TODO: Remove print
-    print(f'File path: {image_path}')
     image.save(image_path)
 
     # FIX Flaw 3: Injection
     #
     # REPLACE
     #
-    # result = subprocess.run(
-    #     ['file', image_path], shell=False,
-    #     timeout=15, stdout=subprocess.PIPE
-    # ).stdout.decode()
-
-    # Ensure that the file is JPEG/PNG with `file` command
     result = subprocess.run(
-        f'file {image_path}', shell=True,
+        ['file', image_path], shell=False,
         timeout=15, stdout=subprocess.PIPE
     ).stdout.decode()
+
+    # Ensure that the file is JPEG/PNG with `file` command
+    # result = subprocess.run(
+    #     f'file {image_path}', shell=True,
+    #     timeout=15, stdout=subprocess.PIPE
+    # ).stdout.decode()
 
     # If the file was not JPEG/PNG, remove it and return error
     if not ('PNG image data' in result or 'JPEG image data' in result):
@@ -202,7 +201,11 @@ def add_image():
         # UNCOMMENT
         #
         # log.warning(f'[{request.remote_addr}] Attempt to upload a file with non-supported file type')
-        os.remove(image_path)
+        try:
+            os.remove(image_path)
+        except FileNotFoundError:
+            return 'Not found', 404
+
         return 'Bad request', 400
 
     try:
@@ -233,21 +236,19 @@ def share_image(image_id):
             # UNCOMMENT
             #
             # if image['owner'] != session.get('user')['id']:
-            #     log.error()
             #     return 'Forbidden', 403
-            #
+
             image['shared'] = not image['shared']
             save_database(database)
-            break
+            return '', 200
+
     # FIX Flaw 6: Security Logging and Monitoring Failures
     #
     # UNCOMMENT
     #
-    # else:
-    #     log.error()
-    #     return 'Not found', 404
+    # log.info(f'[{request.remote_addr}] User {session.get("user")["id"]} tried to share non-existing image {image_id}')
 
-    return '', 200
+    return 'Not found', 404
 
 
 @app.delete('/api/images/<image_id>')
@@ -257,13 +258,9 @@ def delete_image(image_id):
         if image['id'] == image_id:
             # FIX Flaw 1 Broken Access Control
             #
-            # If someone tries to access something that doesn't belong
-            # to them, this action should be denied and logged.
-            #
             # UNCOMMENT
             #
             # if image['owner'] != session.get('user')['id']:
-            #     log.error()
             #     return 'Forbidden', 403
 
             image_path = app.root_path + '/static/images/' + image['filename']
@@ -279,13 +276,9 @@ def delete_image(image_id):
 
     # FIX Flaw 6: Security Logging and Monitoring Failures
     #
-    # If someone tries to delete file based on ID that doesn't
-    # exist, someone is trying to access something that doesn't
-    # belong to them. This activity should be logged.
-    #
     # UNCOMMENT
     #
-    # log.error()
+    # log.info(f'[{request.remote_addr}] User {session.get("user")["id"]} tried to remove non-existing image {image_id}')
 
     return 'Not found', 404
 
