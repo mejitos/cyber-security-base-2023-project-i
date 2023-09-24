@@ -214,7 +214,7 @@ https://github.com/mejitos/cyber-security-base-2023-project-i/blob/398bee06a4f86
 #### Location(s)
 
 <!-- -->
-The whole `login()` function starting at line 80.
+The whole `login()` function starting at line 84.
 
 #### Description
 
