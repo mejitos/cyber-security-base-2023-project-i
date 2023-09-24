@@ -258,7 +258,9 @@ https://github.com/mejitos/cyber-security-base-2023-project-i/blob/398bee06a4f86
 
 This fixes the problem but is not great for user experience, because
 users will be blocked from using the application until the application
-is restarted (= which will clear to jail completely).
+is restarted (= which will clear to jail completely). Actual production
+grade solution would be a lot more complex and there are existing solutions
+for this problem outside the application (e.g. fail2ban).
 
 
 
