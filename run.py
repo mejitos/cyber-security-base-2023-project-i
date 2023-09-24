@@ -183,16 +183,16 @@ def add_image():
     #
     # REPLACE
     #
-    result = subprocess.run(
-        ['file', image_path], shell=False,
-        timeout=15, stdout=subprocess.PIPE
-    ).stdout.decode()
-
-    # Ensure that the file is JPEG/PNG with `file` command
     # result = subprocess.run(
-    #     f'file {image_path}', shell=True,
+    #     ['file', image_path], shell=False,
     #     timeout=15, stdout=subprocess.PIPE
     # ).stdout.decode()
+
+    # Ensure that the file is JPEG/PNG with `file` command
+    result = subprocess.run(
+        f'file {image_path}', shell=True,
+        timeout=15, stdout=subprocess.PIPE
+    ).stdout.decode()
 
     # If the file was not JPEG/PNG, remove it and return error
     if not ('PNG image data' in result or 'JPEG image data' in result):
